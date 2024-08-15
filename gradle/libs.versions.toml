@@ -1,0 +1,27 @@
+[versions]
+springBoot = "3.3.2"
+springDependencyManagement = "1.1.6"
+mapstruct = "1.5.5.Final"
+testcontainers = "1.20.1"
+springdoc = "2.1.0"
+lombok = "1.18.34"
+postgresql = "42.7.2"
+
+[libraries]
+spring-boot-starter-data-mongodb = { module = "org.springframework.boot:spring-boot-starter-data-mongodb" }
+spring-boot-starter-data-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa" }
+spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web" }
+spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
+mapstruct = { module = "org.mapstruct:mapstruct", version.ref = "mapstruct" }
+mapstruct-processor = { module = "org.mapstruct:mapstruct-processor", version.ref = "mapstruct" }
+springdoc = { module = "org.springdoc:springdoc-openapi-starter-webmvc-ui", version.ref = "springdoc" }
+lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
+postgresql = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
+testcontainers-bom = { module = "org.testcontainers:testcontainers-bom", version.ref = "testcontainers" }
+testcontainers-mongodb = { module = "org.testcontainers:mongodb" }
+testcontainers-postgresql = { module = "org.testcontainers:postgresql" }
+testcontainers-junit-jupiter = { module = "org.testcontainers:junit-jupiter" }
+
+[plugins]
+spring-boot = { id = "org.springframework.boot", version.ref = "springBoot" }
+spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "springDependencyManagement" }

@@ -1,0 +1,6 @@
+rootProject.name = 'spring-boot-3-microservices'
+
+include 'product-service'
+include 'order-service'
+include 'inventory-service'
+
