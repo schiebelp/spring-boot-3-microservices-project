@@ -13,14 +13,15 @@ Spring Boot 3, Java 17, Gradle, MongoDB, PostgreSql, REST API
 Common library versions placed to one place at [libs.versions.toml](gradle%2Flibs.versions.toml)
 
 ## Run all microservices in parallel
+```
 ./gradlew bootRun
-
+```
 ## Run individually from root
-
+```
 ./gradlew :product-service:bootRun
 ./gradlew :order-service:bootRun
 ./gradlew :inventory-service:bootRun
-
+```
 # Restapi Documentation
 
 product-service
