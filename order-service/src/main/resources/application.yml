@@ -4,7 +4,7 @@ spring:
 
   datasource:
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/order_db
+    url: jdbc:postgresql://localhost:5433/order_db
     username: order_user
     password: order_pass
 
@@ -13,9 +13,6 @@ spring:
       ddl-auto: create-drop
       show-sql: true
       format_sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
 
   api-docs:
     path: /v3/api-docs

@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.3.2'
 	id 'io.spring.dependency-management' version '1.1.6'
+	//id "org.flywaydb.flyway" version "10.17.1" todo for creating data on startup
 }
 
 group = 'com.microservices'
@@ -24,13 +25,24 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'org.postgresql:postgresql'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	// spring
+	implementation libs.spring.boot.starter.data.jpa
+	implementation libs.spring.boot.starter.web
+	testImplementation libs.spring.boot.starter.test
+
+	// rest api documentation
+	implementation libs.springdoc
+
+	// lombok
+	annotationProcessor libs.lombok
+
+	// postgresql
+	runtimeOnly libs.postgresql
+
+	// Test containers, see https://java.testcontainers.org/
+	testImplementation platform(libs.testcontainers.bom)
+	testImplementation libs.testcontainers.postgresql
+	testImplementation libs.testcontainers.junit.jupiter
 }
 
 tasks.named('test') {

@@ -31,7 +31,7 @@ class OrderServiceApplicationTests {
 
 
 	/**
-	 * Context loads and also all beans
+	 * Explicit context loads
 	 *
 	 * https://www.jvt.me/posts/2021/06/25/spring-context-test/
 	 */

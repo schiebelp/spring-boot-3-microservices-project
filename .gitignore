@@ -44,3 +44,4 @@ bin/
 
 /product-service/mongo-data/
 
+/.idea/sonarlint/
