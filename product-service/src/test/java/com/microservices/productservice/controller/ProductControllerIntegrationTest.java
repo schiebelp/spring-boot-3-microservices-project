@@ -37,14 +37,20 @@ class ProductControllerIntegrationTest extends AbstractIntegrationTest {
                 .andExpect(status().isCreated());
 
         assertEquals(1, productRepository.findAll().size());
+
+        var product = productRepository.findByName(productRequest.getName());
+
+        assertEquals(productRequest.getName(), product.getName());
+        assertEquals(productRequest.getDescription(), product.getDescription());
+        assertEquals(productRequest.getPrice(), product.getPrice());
     }
 
     @Test
     void shouldReturnAllProducts() throws Exception {
 
-        Product product1 = productRepository.save(Product.builder()
+        var product1 = productRepository.save(Product.builder()
                 .name("Huawei").price(BigDecimal.valueOf(1200)).description("Huawei Phone").build());
-        Product product2 = productRepository.save(Product.builder()
+        var product2 = productRepository.save(Product.builder()
                 .name("Samsung").price(BigDecimal.valueOf(1300)).description("Samsung Phone").build());
 
         productRepository.save(product1);

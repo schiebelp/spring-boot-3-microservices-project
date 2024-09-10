@@ -1,6 +1,6 @@
 # Spring Boot 3 Microservices Project
 
-Monorepo project for learning purposes. In progress.
+Monorepo E-commerce project for learning purposes. In progress.
 
 List of services:
  - Product service
@@ -8,7 +8,7 @@ List of services:
  - Order Service
 
 Current Stack:
-Spring Boot 3, Java 17, Gradle, MongoDB, PostgreSql, REST API, TestContainers
+Spring Boot 3, Java 17, Gradle, MongoDB, PostgreSql, REST API, TestContainers, Flyway, Docker
 
 Common library versions placed to one place at [libs.versions.toml](gradle%2Flibs.versions.toml)
 
@@ -85,14 +85,17 @@ select * from "order";
 select * from order_line_items;
 select * from order_order_line_items;
 select * from inventory;
-...
+select * from flyway_schema_history;
 ```
 
 # Misc
+
+## Local Test All
 ```shell
 ./gradlew test
 ```
-### Each
+
+### Each (run DB before this)
 ```shell
 ./gradlew :product-service:test
 ```
@@ -105,6 +108,23 @@ select * from inventory;
 ./gradlew :inventory-service:test
 ```
 
+## DB inits before local runs
+DB inventory
+```shell
+docker compose -f inventory-service/docker-compose.yml up -d inventory-postgres-db
+```
+
+DB order
+```shell
+docker compose -f order-service/docker-compose.yml up -d order-postgres-db
+```
+
+DB product
+```shell
+docker compose -f product-service/docker-compose.yml up -d mongo
+```
+
+etc.
 ``
 docker compose up
 ``
