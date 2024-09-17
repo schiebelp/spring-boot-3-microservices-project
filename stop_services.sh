@@ -12,4 +12,9 @@ do
     echo
 done
 
+echo "Removing volumes for all services..."
+docker volume rm $(docker volume ls -q)
+echo "removed."
+echo
+
 echo "All services have been stopped."

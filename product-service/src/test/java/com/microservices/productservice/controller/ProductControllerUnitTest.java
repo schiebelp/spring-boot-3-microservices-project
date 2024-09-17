@@ -1,7 +1,7 @@
 package com.microservices.productservice.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.microservices.productservice.AbstractIntegrationTest;
+import com.microservices.productservice.AbstractTest;
 import com.microservices.productservice.dto.ProductRequest;
 import com.microservices.productservice.model.Product;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc
-class ProductControllerIntegrationTest extends AbstractIntegrationTest {
+class ProductControllerUnitTest extends AbstractTest {
 
     @Autowired
     private MockMvc mockMvc;

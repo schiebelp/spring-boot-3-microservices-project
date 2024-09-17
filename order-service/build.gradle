@@ -42,6 +42,10 @@ dependencies {
 	// postgresql
 	runtimeOnly libs.postgresql
 
+	//openfeign
+	implementation libs.openfeign
+
+
 	// Test containers, see https://java.testcontainers.org/
 	testImplementation platform(libs.testcontainers.bom)
 	testImplementation libs.testcontainers.postgresql

@@ -12,7 +12,7 @@ import org.testcontainers.junit.jupiter.Container;
 
 @SpringBootTest
 @ActiveProfiles("test")
-public abstract class AbstractIntegrationTest {
+public abstract class AbstractTest {
 
     @Autowired
     protected ProductRepository productRepository;

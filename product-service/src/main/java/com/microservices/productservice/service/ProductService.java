@@ -18,7 +18,7 @@ public class ProductService {
     public void createProduct(Product product) {
 
         repository.save(product);
-        log.info("Product {} is saved", product.getId());
+        log.debug("Product {} is saved", product.getId());
 
     }
 

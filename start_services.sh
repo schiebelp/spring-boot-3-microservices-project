@@ -13,12 +13,22 @@ start_service() {
     echo
 }
 
+# Build executable jar file with dependencies
+build_jar() {
+    echo "Building $1..."
+    cd $1
+    ./gradlew bootJar
+    echo "$1 built."
+    echo
+}
+
 # Main script
 echo "Starting all services..."
 echo
 
 for service in "${services[@]}"
 do
+    build_jar $service
     start_service $service
 done
 

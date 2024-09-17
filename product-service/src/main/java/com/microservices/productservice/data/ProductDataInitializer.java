@@ -29,7 +29,7 @@ public class ProductDataInitializer {
     public void init() {
         if (productRepository.count() == 0) { // Only insert if the DB is empty
             productRepository.saveAll(DEFAULT_PRODUCT_LIST);
-            log.info("Default products initialized.");
+            log.debug("Default products initialized.");
         }
     }
 

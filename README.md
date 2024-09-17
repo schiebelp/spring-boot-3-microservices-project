@@ -8,42 +8,23 @@ List of services:
  - Order Service
 
 Current Stack:
-Spring Boot 3, Java 17, Gradle, MongoDB, PostgreSql, REST API, TestContainers, Flyway, Docker
+Spring Boot 3, Java 17, Gradle, MongoDB, PostgreSql, REST API, TestContainers, Flyway, Docker, Spring Cloud OpenFeign
 
 Common library versions placed to one place at [libs.versions.toml](gradle%2Flibs.versions.toml)
 
 ## Start Microservices
 
-### In Docker
+To start all Microservices in Docker, please run:
 ```shell
 ./start_services.sh
 ```
+
+To stop all Microservices, please use:
 ```shell
 ./stop_services.sh
 ```
 
-You may start service individually using
-```shell
-docker compose up
-```
-
-
-### Localy
-```shell
-./gradlew bootRun
-```
-#### Each
-```shell
-./gradlew :product-service:bootRun
-```
-
-```shell
-./gradlew :order-service:bootRun
-```
-
-```shell
-./gradlew :inventory-service:bootRun
-```
+![img.png](img.png)
 
 # OpenAPI Documentation
 
@@ -58,6 +39,9 @@ Order Service (PostgreSQL)
 Inventory Service (PostgreSQL)
 - http://localhost:8082/swagger-ui/index.html#/
 - http://localhost:8082/v3/api-docs
+
+Postman
+[Microservices - OpenAPI.postman_collection.json](Microservices%20-%20OpenAPI.postman_collection.json)
 
 # Useful PostgreSQL Commands
 **Login**
@@ -88,14 +72,12 @@ select * from inventory;
 select * from flyway_schema_history;
 ```
 
-# Misc
 
-## Local Test All
+## Test
 ```shell
 ./gradlew test
 ```
-
-### Each (run DB before this)
+Or
 ```shell
 ./gradlew :product-service:test
 ```
@@ -108,23 +90,49 @@ select * from flyway_schema_history;
 ./gradlew :inventory-service:test
 ```
 
-## DB inits before local runs
-DB inventory
+## Run
+```shell
+./gradlew bootRun
+```
+Or
+```shell
+./gradlew :product-service:bootRun
+```
+
+```shell
+./gradlew :order-service:bootRun
+```
+
+```shell
+./gradlew :inventory-service:bootRun
+```
+
+## Database services
+
+Inventory PostgreSQL
 ```shell
 docker compose -f inventory-service/docker-compose.yml up -d inventory-postgres-db
 ```
 
-DB order
+Order PostgreSQL
 ```shell
 docker compose -f order-service/docker-compose.yml up -d order-postgres-db
 ```
 
-DB product
+Product MongoDB
 ```shell
 docker compose -f product-service/docker-compose.yml up -d mongo
 ```
 
-etc.
-``
-docker compose up
-``
+Flyway scripts check
+```
+jar tf build/libs/inventory-service-0.0.1-SNAPSHOT.jar | grep migration
+```
+```
+docker exec -it 7c9a6cff9ef2 ls db/migration
+```
+
+Todo:
+- Fix network issues
+- Implement Notification Service with Kafka Event
+- Port to Kubernetes

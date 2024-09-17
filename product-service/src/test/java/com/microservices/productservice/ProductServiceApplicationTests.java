@@ -12,7 +12,7 @@ import org.springframework.context.ApplicationContext;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest
-class ProductServiceApplicationTests {
+class ProductServiceApplicationTests extends AbstractTest {
 
 	@Autowired
 	private ApplicationContext context;
@@ -38,13 +38,14 @@ class ProductServiceApplicationTests {
 	@Test
 	void contextLoads() {
 
-		assertThat(context).isNotNull();
-
 		// check if all beans are injected
 		assertThat(productController).isNotNull();
 		assertThat(productService).isNotNull();
 		assertThat(productMapper).isNotNull();
 		assertThat(productRepository).isNotNull();
+
+		// check if context is injected
+		assertThat(context).isNotNull();
 	}
 
 }

@@ -1,6 +1,7 @@
-package com.microservices.orderservice;
+package com.microservices.inventory_service;
 
-import com.microservices.orderservice.repository.OrderRepository;
+import com.microservices.inventory_service.model.Inventory;
+import com.microservices.inventory_service.repository.InventoryRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,13 +12,12 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
-
 @SpringBootTest
 @Testcontainers
-public abstract class AbstractIntegrationTest {
+public abstract class AbstractTest {
 
     @Autowired
-    protected OrderRepository orderRepository;
+    protected InventoryRepository inventoryRepository;
 
     /**
      * Test container PostgreSQ Database
@@ -37,6 +37,13 @@ public abstract class AbstractIntegrationTest {
 
     @AfterEach
     void tearDown() { //clean up
-        orderRepository.deleteAll();
+        inventoryRepository.deleteAll();
+    }
+
+    protected Inventory createInventoryItem(){
+       return inventoryRepository.save(Inventory.builder()
+                .skuCode("aligator_3")
+                .quantity(10)
+                .build());
     }
 }

@@ -25,7 +25,7 @@ public class OrderController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public String createOrder(@RequestBody OrderRequest request) {
-        log.info("Create Order request: {}", request);
+        log.debug("Create Order request: {}", request);
 
         orderService.placeOrder(
                 mapper.toModel(request, UUID.randomUUID().toString())

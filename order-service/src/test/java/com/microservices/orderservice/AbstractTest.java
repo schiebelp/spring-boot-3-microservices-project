@@ -1,6 +1,6 @@
-package com.microservices.inventory_service;
+package com.microservices.orderservice;
 
-import com.microservices.inventory_service.repository.InventoryRepository;
+import com.microservices.orderservice.repository.OrderRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,12 +11,13 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
+
 @SpringBootTest
 @Testcontainers
-public abstract class AbstractIntegrationTest {
+public abstract class AbstractTest {
 
     @Autowired
-    protected InventoryRepository inventoryRepository;
+    protected OrderRepository orderRepository;
 
     /**
      * Test container PostgreSQ Database
@@ -36,6 +37,6 @@ public abstract class AbstractIntegrationTest {
 
     @AfterEach
     void tearDown() { //clean up
-        inventoryRepository.deleteAll();
+        orderRepository.deleteAll();
     }
 }

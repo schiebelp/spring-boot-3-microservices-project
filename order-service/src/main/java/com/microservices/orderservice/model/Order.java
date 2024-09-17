@@ -11,7 +11,6 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name="\"order\"") // reserved keyword in postgre
-//@Table(name="orders") // reserved keyword in postgre
 public class Order {
 
     @Id
@@ -21,6 +20,6 @@ public class Order {
     private String orderNumber;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List<OrderLineItems> orderLineItems;
+    private List<OrderLineItem> orderLineItems;
 
 }

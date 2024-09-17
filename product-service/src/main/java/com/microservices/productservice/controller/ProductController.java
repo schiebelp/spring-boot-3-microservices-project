@@ -23,7 +23,7 @@ public class ProductController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void createProduct(@RequestBody ProductRequest request) {
-        log.info("Create Product request: {}", request);
+        log.debug("Create Product request: {}", request);
 
         productService.createProduct(
                 mapper.toModel(request));

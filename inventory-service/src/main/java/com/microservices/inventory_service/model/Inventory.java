@@ -25,4 +25,6 @@ public class Inventory {
 
     private Integer quantity;
 
+    private String location;
+
 }
