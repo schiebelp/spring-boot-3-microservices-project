@@ -24,8 +24,6 @@ To stop all Microservices, please use:
 ./stop_services.sh
 ```
 
-![img.png](img.png)
-
 # OpenAPI Documentation
 
 Product service (MongoDB)
@@ -133,6 +131,7 @@ docker exec -it 7c9a6cff9ef2 ls db/migration
 ```
 
 Todo:
-- Fix network issues
+- API GW
 - Implement Notification Service with Kafka Event
-- Port to Kubernetes
+- Port to Kubernetes cluster
+- Port to AWS

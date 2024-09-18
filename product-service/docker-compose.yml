@@ -1,5 +1,5 @@
 services:
-  product-service:
+  product-app:
     image: product-service-image:latest
     build:
       context: .  # Sets current directory for Dockerfile
@@ -13,6 +13,9 @@ services:
         condition: service_healthy # Wait for mongo to start
     volumes:
       - product-service-data:/app/data
+    networks:
+      - shared-network
+      - private-network
 
 
   mongo:
@@ -28,9 +31,15 @@ services:
       start_period: 20s # time for recovery
     volumes:
       - ./mongo-data:/data/db
-
-
+    networks:
+      - private-network
 
 volumes:
   mongo-data:
   product-service-data:
+
+networks:
+  shared-network:
+    external: true  # Indicate it's an external, pre-existing network
+  private-network:
+    external: false  # Indicate it's an internal network

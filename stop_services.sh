@@ -17,4 +17,8 @@ docker volume rm $(docker volume ls -q)
 echo "removed."
 echo
 
+echo "Removing network 'shared-network'..."
+docker network rm shared-network
+echo "removed."
+
 echo "All services have been stopped."
