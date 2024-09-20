@@ -1,8 +1,7 @@
 # Start with lightweight base image
 FROM alpine:3.20.1
 
-## Install OpenJDK 17
-RUN apk add --no-cache openjdk17
+RUN apk --no-cache --update add openjdk21-jre
 
 # Define jar app
 ARG JAR_FILE=build/libs/product-service-0.0.1-SNAPSHOT.jar
